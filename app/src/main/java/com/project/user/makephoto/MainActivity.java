@@ -26,12 +26,17 @@ import static android.R.attr.button;
 public class MainActivity extends AppCompatActivity {
     static MainActivity mainActivity;
     public static Context mContext;
-    SeekBar left_luminosity;
-    SeekBar left_saturation;
-   // ImageView selected_image;
-    Bitmap image_bitmap;
-    int current_progress_l;
-    int current_progress_s;
+    SeekBar left_brightness;
+    SeekBar left_opacity;
+    SeekBar right_brightness;
+    SeekBar right_opacity;
+
+    int click_grey_left = 0;
+    int click_grey_right = 0;
+    int curr_progress_leftB = 127;
+    int curr_progress_leftO = 255;
+    int curr_progress_rightB = 127;
+    int curr_progress_rightO = 255;
     final int REQ_CODE_SELECT_IMAGE=100;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +46,8 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         Button button_select = (Button) findViewById(R.id.button);
+        Button button_left_grey = (Button) findViewById(R.id.button_left_grey);
+        Button button_right_grey = (Button) findViewById(R.id.button_right_grey);
 
         button_select.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,48 +59,107 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent2);
             }
         });
-        qq();
+
+        button_left_grey.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                click_grey_left++;
+                ((ControlActivity)ControlActivity.mContext).qq(click_grey_left, curr_progress_leftB, curr_progress_leftO);
+            }
+        });
+
+        button_right_grey.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                click_grey_right++;
+                ((ControlActivity2)ControlActivity2.mContext).qq(click_grey_right, curr_progress_rightB, curr_progress_rightO);
+            }
+        });
+        qqleft();
+        qqright();
 
     }
-    public void qq(){
+    public void qqleft(){
 
-        left_saturation = (SeekBar) findViewById(R.id.left_saturation);
-        left_saturation.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
+        left_opacity = (SeekBar) findViewById(R.id.left_opacity);
+        left_opacity.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             @Override
             public void onStartTrackingTouch(SeekBar seekBar){
             }
             @Override
             public void onStopTrackingTouch(SeekBar seekBar){
                 //0~100  default :  50
-                ((ControlActivity)ControlActivity.mContext).qq(left_saturation, left_luminosity);
+                ((ControlActivity)ControlActivity.mContext).qq(click_grey_left, curr_progress_leftB, curr_progress_leftO);
                // ControlActivity.selected_image.setImageBitmap(SetSaturation(image_bitmap, current_progress_s));
 
 
             }
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser){
-                current_progress_s=progress;
+                curr_progress_leftO=progress;
             }
         });
-        left_luminosity = (SeekBar) findViewById(R.id.left_luminosity);
-        left_luminosity.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
+        left_brightness = (SeekBar) findViewById(R.id.left_brightness);
+        left_brightness.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
             @Override
             public void onStartTrackingTouch(SeekBar seekBar){
             }
             @Override
             public void onStopTrackingTouch(SeekBar seekBar){
                 //0~100  default :  50
-                ((ControlActivity)ControlActivity.mContext).qq(left_saturation, left_luminosity);
+                ((ControlActivity)ControlActivity.mContext).qq(click_grey_left, curr_progress_leftB, curr_progress_leftO);
                 //selected_image.setImageBitmap(SetBrightness(image_bitmap, current_progress_l));
 
 
             }
             @Override
             public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser){
-                current_progress_l=progress;
+                curr_progress_leftB=progress;
             }
         });
     }
+
+
+    public void qqright(){
+
+        right_opacity = (SeekBar) findViewById(R.id.right_opacity);
+        right_opacity.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar){
+            }
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar){
+                //0~100  default :  50
+                ((ControlActivity2)ControlActivity2.mContext).qq(click_grey_right, curr_progress_rightB, curr_progress_rightO);
+                // ControlActivity.selected_image.setImageBitmap(SetSaturation(image_bitmap, current_progress_s));
+
+
+            }
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser){
+                curr_progress_rightO=progress;
+            }
+        });
+        right_brightness = (SeekBar) findViewById(R.id.right_brightness);
+        right_brightness.setOnSeekBarChangeListener(new SeekBar.OnSeekBarChangeListener(){
+            @Override
+            public void onStartTrackingTouch(SeekBar seekBar){
+            }
+            @Override
+            public void onStopTrackingTouch(SeekBar seekBar){
+                //0~100  default :  50
+                ((ControlActivity2)ControlActivity2.mContext).qq(click_grey_right, curr_progress_rightB, curr_progress_rightO);
+                //selected_image.setImageBitmap(SetBrightness(image_bitmap, current_progress_l));
+
+
+            }
+            @Override
+            public void onProgressChanged(SeekBar seekBar, int progress, boolean fromUser){
+                curr_progress_rightB=progress;
+            }
+        });
+    }
+
 
     public void setDefaultDisplay(){
 
