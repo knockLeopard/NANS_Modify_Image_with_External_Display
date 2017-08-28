@@ -13,7 +13,7 @@ Moreover, you can apply filter - gray, constrast -
 
 ## Video Demo
 ![demo](readme_demo_picture.png)
-- [Click(youtube)](https://github.com/knockleopard/NANS_Modify_Image_With_External_Display)
+- [Click(youtube)](https://youtu.be/xRXIKekMulM)
 
 ## Features
 - __Enable Modify__ image
