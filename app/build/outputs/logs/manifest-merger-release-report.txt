@@ -13,6 +13,10 @@ ADDED from C:\Users\user\AndroidStudioProjects\MakePhoto\app\src\main\AndroidMan
 	android:versionCode
 		INJECTED from C:\Users\user\AndroidStudioProjects\MakePhoto\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\user\AndroidStudioProjects\MakePhoto\app\src\main\AndroidManifest.xml
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from C:\Users\user\AndroidStudioProjects\MakePhoto\app\src\main\AndroidManifest.xml:4:5-80
+	android:name
+		ADDED from C:\Users\user\AndroidStudioProjects\MakePhoto\app\src\main\AndroidManifest.xml:4:22-78
 application
 ADDED from C:\Users\user\AndroidStudioProjects\MakePhoto\app\src\main\AndroidManifest.xml:5:5-28:19
 MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\user\.android\build-cache\27198d22c669526406db49e154ac1bd01ea2fb15\output\AndroidManifest.xml:29:5-20
@@ -59,10 +63,6 @@ activity#com.project.user.makephoto.ControlActivity2
 ADDED from C:\Users\user\AndroidStudioProjects\MakePhoto\app\src\main\AndroidManifest.xml:24:9-25:20
 	android:name
 		ADDED from C:\Users\user\AndroidStudioProjects\MakePhoto\app\src\main\AndroidManifest.xml:24:19-51
-uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
-ADDED from C:\Users\user\AndroidStudioProjects\MakePhoto\app\src\main\AndroidManifest.xml:29:5-80
-	android:name
-		ADDED from C:\Users\user\AndroidStudioProjects\MakePhoto\app\src\main\AndroidManifest.xml:29:22-78
 uses-sdk
 INJECTED from C:\Users\user\AndroidStudioProjects\MakePhoto\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\user\.android\build-cache\27198d22c669526406db49e154ac1bd01ea2fb15\output\AndroidManifest.xml:21:5-23:78

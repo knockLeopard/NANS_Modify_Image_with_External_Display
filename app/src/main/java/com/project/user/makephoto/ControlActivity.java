@@ -344,16 +344,26 @@ public class ControlActivity extends AppCompatActivity {
 
     public void savePicture() {
         String root = Environment.getExternalStorageDirectory().toString();
-        File myDir = new File(root + "/300");
+        File dir = new File(root + "/Download");
+        File temp = new File(dir, "temp.jpg");
+        if (!temp.mkdirs()) {
+            //Toast.makeText(controlActivity, "SHIT", Toast.LENGTH_SHORT).show();
+        }
+
         //Toast.makeText(controlActivity, root, Toast.LENGTH_SHORT).show();
-        myDir.mkdirs();
-        String fname = "Image_fuck"+ ".jpg";
-        File file = new File(myDir, fname);
-        if (!file.exists()) file.mkdirs();
+        //myDir.mkdirs();
+        //String fname = "Image_fuck"+ ".jpg";
+        //File file = new File(myDir, fname);
+//        if (file.exists()) {
+//            Toast.makeText(controlActivity, "There is..?", Toast.LENGTH_SHORT).show();
+//        } else {
+//            Toast.makeText(controlActivity, "There is not..?", Toast.LENGTH_SHORT).show();
+//        }
         //Log.i("LOAD", root + fname);
         try {
-            FileOutputStream out = new FileOutputStream(file);
+            FileOutputStream out = new FileOutputStream(temp);
             image_bitmap_modified.compress(Bitmap.CompressFormat.JPEG, 90, out);
+            Toast.makeText(controlActivity, "file saved", Toast.LENGTH_SHORT).show();
             out.flush();
             out.close();
         } catch (Exception e) {
