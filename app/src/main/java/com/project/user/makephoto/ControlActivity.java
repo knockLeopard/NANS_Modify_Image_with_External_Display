@@ -342,7 +342,26 @@ public class ControlActivity extends AppCompatActivity {
         return bmOut;
     }
 
+    public void savePicture() {
+        String root = Environment.getExternalStorageDirectory().toString();
+        File myDir = new File(root + "/300");
+        //Toast.makeText(controlActivity, root, Toast.LENGTH_SHORT).show();
+        myDir.mkdirs();
+        String fname = "Image_fuck"+ ".jpg";
+        File file = new File(myDir, fname);
+        if (!file.exists()) file.mkdirs();
+        //Log.i("LOAD", root + fname);
+        try {
+            FileOutputStream out = new FileOutputStream(file);
+            image_bitmap_modified.compress(Bitmap.CompressFormat.JPEG, 90, out);
+            out.flush();
+            out.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 
+    /*
     public void savePicture(){
         Bitmap saveBitmap = image_bitmap_modified;
         try{
@@ -359,6 +378,6 @@ public class ControlActivity extends AppCompatActivity {
 
 
     }
-
+*/
 
 }

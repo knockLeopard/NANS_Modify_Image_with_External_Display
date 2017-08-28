@@ -1,4 +1,4 @@
-#Mon Aug 28 19:25:48 KST 2017
+#Mon Aug 28 22:09:53 KST 2017
 base.0=C\:\\Users\\user\\AndroidStudioProjects\\MakePhoto\\app\\build\\intermediates\\transforms\\dex\\release\\folders\\1000\\1f\\main
 renamed.0=classes.dex
 file.0=C\:\\Users\\user\\AndroidStudioProjects\\MakePhoto\\app\\build\\intermediates\\transforms\\dex\\release\\folders\\1000\\1f\\main\\classes.dex
