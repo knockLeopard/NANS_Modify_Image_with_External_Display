@@ -11,7 +11,7 @@ Moreover, you can apply filter - gray, constrast -
 2. First external Device
 3. Second external Device
 
-### Demo
+### How does it look like
 
 
 ### Features
@@ -25,8 +25,11 @@ Moreover, you can apply filter - gray, constrast -
 
 ### Author
 |name|where|github|
-|---------|:------------------------------------------:|------------:|
-|Shim, Sehee | Computer Science and Engineering, SNU | knockleopard|
+|:---------:|:------------------------------------------:|:------------:|
+|Shim, Sehee|Computer Science and Engineering, SNU|knockleopard|
+|Kim, ShinHwi|Computer Science and Engineering, SNU|KimShinHwi|
+|Choi, Yoonseo|Computer Science and Engineering, SNU|Jim741305|
+
 
 Thanks to
 - TBD
