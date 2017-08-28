@@ -24,10 +24,10 @@ Moreover, you can apply filter - gray, constrast -
 - JDK 8
 
 ### Author
-name|where|github
-|---
-Shim, Sehee | Computer Science and Engineering, SNU | knockleopard
+|name|where|github|
+|---------|:------------------------------------------:|------------:|
+|Shim, Sehee | Computer Science and Engineering, SNU | knockleopard|
 
-### Thanks to
+Thanks to
 - TBD
 
