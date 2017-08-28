@@ -4,23 +4,31 @@ import android.app.Activity;
 import android.app.ActivityManager;
 import android.content.ComponentName;
 import android.content.Context;
+import android.content.ContextWrapper;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
 import android.hardware.display.DisplayManager;
+import android.icu.text.SimpleDateFormat;
 import android.os.Bundle;
+import android.os.Environment;
 import android.os.Handler;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Display;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Date;
+import java.util.Random;
 import java.util.ResourceBundle;
 
 
@@ -67,12 +75,19 @@ public class ControlActivity extends AppCompatActivity {
 
     }
 
-    public void qq(int click_grey_left, int progressB, int progressO) {
+    public void qq(int click_cont_left, int click_grey_left, int progressB, int progressO) {
 
         if (click_grey_left % 2 == 1) {
             image_bitmap_modified = SetGrey(image_bitmap);
         } else {
             image_bitmap_modified = image_bitmap;
+        }
+
+        if(click_cont_left % 2 == 1){
+            image_bitmap_modified = SetCont(image_bitmap_modified);
+        }
+        else{
+            ;
         }
 
         image_bitmap_modified = SetBrightness(image_bitmap_modified, progressB);
@@ -96,6 +111,7 @@ public class ControlActivity extends AppCompatActivity {
         intent2.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
         intent2.addFlags(Intent.FLAG_ACTIVITY_MULTIPLE_TASK);
         intent2.setComponent(new ComponentName("com.project.user.makephoto", "com.project.user.makephoto.ControlActivity2"));
+
         startActivity(intent2);
 
 
@@ -168,7 +184,6 @@ public class ControlActivity extends AppCompatActivity {
 
         int[] pixel_array = new int[width * height];
         gap = value - 127;
-        Toast.makeText(getBaseContext(), "Brit Bar : " + value, Toast.LENGTH_SHORT).show();
 
         src.getPixels(pixel_array, 0, width, 0, 0, width, height);
 
@@ -204,61 +219,6 @@ public class ControlActivity extends AppCompatActivity {
         bmOut.setPixels(pixel_array, 0, width, 0, 0, width, height);
 
         int pixel_test = bmOut.getPixel(250, 250);
-        Toast.makeText(getBaseContext(), "Brit func R : " + Color.red(pixel_test) + "G : " + Color.green(pixel_test) + "B : " + Color.blue(pixel_test) + "alpha : " + Color.alpha(pixel_test), Toast.LENGTH_SHORT).show();
-
-        // return final image
-        return bmOut;
-
-    }
-
-
-
-
-/*
-    public Bitmap SetBrightness(final Bitmap src, int value) {
-
-        // original image size
-        width = src.getWidth();
-        height = src.getHeight();
-        // create output bitmap
-        bmOut = Bitmap.createBitmap(width, height, src.getConfig());
-        // color information
-        int A, R, G, B;
-        int pixel;
-        gap = value-127;
-        Toast.makeText(getBaseContext(), "Brit Bar : " + value,Toast.LENGTH_SHORT).show();
-
-        // scan through all pixel
-
-        for(int y = 0; y < height; ++y) {
-            for(int x = 0; x < width; ++x) {
-                // get pixel color
-                pixel = src.getPixel(x, y);
-                A = Color.alpha(pixel);
-                R = Color.red(pixel);
-                G = Color.green(pixel);
-                B = Color.blue(pixel);
-
-                // increase/decrease each channel
-                R += gap;
-                if(R > 255) { R = 255; }
-                else if(R < 0) { R = 0; }
-
-                G += gap;
-                if(G > 255) { G = 255; }
-                else if(G < 0) { G = 0; }
-
-                B += gap;
-                if(B > 255) { B = 255; }
-                else if(B < 0) { B = 0; }
-
-                // apply new pixel color to output bitmap
-                bmOut.setPixel(x, y, Color.argb(A, R, G, B));
-            }
-        }
-
-        int pixel_test = bmOut.getPixel(250, 250);
-        Toast.makeText(getBaseContext(), "Brit func R : " + Color.red(pixel_test) + "G : " + Color.green(pixel_test) + "B : " + Color.blue(pixel_test) + "alpha : " + Color.alpha(pixel_test), Toast.LENGTH_SHORT).show();
 
 
         // return final image
@@ -266,7 +226,9 @@ public class ControlActivity extends AppCompatActivity {
 
     }
 
-*/
+
+
+
 
 
     public Bitmap SetOpacity(Bitmap src, int value) {
@@ -282,8 +244,7 @@ public class ControlActivity extends AppCompatActivity {
         int gap = value - 255;
         int[] pixel_array = new int[width * height];
 
-        Toast.makeText(getBaseContext(), "Opac Bar : " + value, Toast.LENGTH_SHORT).show();
-        // scan through all pixels
+         // scan through all pixels
 
         src.getPixels(pixel_array, 0, width, 0, 0, width, height);
 
@@ -308,8 +269,6 @@ public class ControlActivity extends AppCompatActivity {
         int pixel_test = bmOut.getPixel(250, 250);
 
 
-        Toast.makeText(getBaseContext(), "Opac func R : " + Color.red(pixel_test) + "G : " + Color.green(pixel_test) + "B : " + Color.blue(pixel_test) + "alpha : " + Color.alpha(pixel_test), Toast.LENGTH_SHORT).show();
-
         // return final image
         return bmOut;
     }
@@ -328,7 +287,6 @@ public class ControlActivity extends AppCompatActivity {
         int avgRGB;
         int pixel;
         int[] pixel_array = new int[width * height];
-        // Toast.makeText(getBaseContext(), "Brit Bar : " + value,Toast.LENGTH_SHORT).show();
 
 
         src.getPixels(pixel_array, 0, width, 0, 0, width, height);
@@ -349,4 +307,58 @@ public class ControlActivity extends AppCompatActivity {
         // return final image
         return bmOut;
     }
+
+    public Bitmap SetCont(Bitmap src) {
+
+        // original image size
+        width = src.getWidth();
+        height = src.getHeight();
+        length = width * height;
+        // create output bitmap
+        bmOut = Bitmap.createBitmap(width, height, src.getConfig());
+        // color information
+        int A, R, G, B;
+        int avgRGB;
+        int pixel;
+        int[] pixel_array = new int[width * height];
+
+
+        src.getPixels(pixel_array, 0, width, 0, 0, width, height);
+
+        for (int i = 0; i < length; i++) {
+            //A = Color.alpha(pixel);
+            A = Color.alpha(pixel_array[i]);
+            R = pixel_array[i] & 0x00FF;
+            G = pixel_array[i] >> 8 & 0x00FF;
+            B = pixel_array[i] >> 16 & 0x00FF;
+
+
+
+            pixel_array[i] = Color.argb(A, R, G, B);
+        }
+        bmOut.setPixels(pixel_array, 0, width, 0, 0, width, height);
+
+        // return final image
+        return bmOut;
+    }
+
+
+    public void savePicture(){
+        Bitmap saveBitmap = image_bitmap_modified;
+        try{
+
+            File file = new File("test.png");
+            FileOutputStream fos = openFileOutput("test.png" , 0);
+            saveBitmap.compress(Bitmap.CompressFormat.PNG, 100 , fos);
+            fos.flush();
+            fos.close();
+
+            Toast.makeText(this, "file saved", Toast.LENGTH_SHORT).show();
+        }catch(Exception e) { Toast.makeText(this, "file error", Toast.LENGTH_SHORT).show();}
+
+
+
+    }
+
+
 }

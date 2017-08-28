@@ -1,6 +1,6 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\user\AndroidStudioProjects\MakePhoto\app\src\main\AndroidManifest.xml:2:1-29:12
+ADDED from C:\Users\user\AndroidStudioProjects\MakePhoto\app\src\main\AndroidManifest.xml:2:1-31:12
 	package
 		ADDED from C:\Users\user\AndroidStudioProjects\MakePhoto\app\src\main\AndroidManifest.xml:3:5-41
 		INJECTED from C:\Users\user\AndroidStudioProjects\MakePhoto\app\src\main\AndroidManifest.xml
@@ -14,7 +14,7 @@ ADDED from C:\Users\user\AndroidStudioProjects\MakePhoto\app\src\main\AndroidMan
 		INJECTED from C:\Users\user\AndroidStudioProjects\MakePhoto\app\src\main\AndroidManifest.xml
 		INJECTED from C:\Users\user\AndroidStudioProjects\MakePhoto\app\src\main\AndroidManifest.xml
 application
-ADDED from C:\Users\user\AndroidStudioProjects\MakePhoto\app\src\main\AndroidManifest.xml:5:5-27:19
+ADDED from C:\Users\user\AndroidStudioProjects\MakePhoto\app\src\main\AndroidManifest.xml:5:5-28:19
 MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\user\.android\build-cache\27198d22c669526406db49e154ac1bd01ea2fb15\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-v4:25.3.1] C:\Users\user\.android\build-cache\8473aaf95037d11731d9dbe68af6d97e9ff90644\output\AndroidManifest.xml:29:5-20
 MERGED from [com.android.support:support-fragment:25.3.1] C:\Users\user\.android\build-cache\fd84c537abc32d0249b4b43889cca3cdfce00029\output\AndroidManifest.xml:29:5-20
@@ -52,13 +52,17 @@ ADDED from C:\Users\user\AndroidStudioProjects\MakePhoto\app\src\main\AndroidMan
 	android:name
 		ADDED from C:\Users\user\AndroidStudioProjects\MakePhoto\app\src\main\AndroidManifest.xml:16:27-74
 activity#com.project.user.makephoto.ControlActivity
-ADDED from C:\Users\user\AndroidStudioProjects\MakePhoto\app\src\main\AndroidManifest.xml:20:9-21:20
+ADDED from C:\Users\user\AndroidStudioProjects\MakePhoto\app\src\main\AndroidManifest.xml:20:9-22:20
 	android:name
-		ADDED from C:\Users\user\AndroidStudioProjects\MakePhoto\app\src\main\AndroidManifest.xml:20:19-50
+		ADDED from C:\Users\user\AndroidStudioProjects\MakePhoto\app\src\main\AndroidManifest.xml:21:13-44
 activity#com.project.user.makephoto.ControlActivity2
-ADDED from C:\Users\user\AndroidStudioProjects\MakePhoto\app\src\main\AndroidManifest.xml:23:9-24:20
+ADDED from C:\Users\user\AndroidStudioProjects\MakePhoto\app\src\main\AndroidManifest.xml:24:9-25:20
 	android:name
-		ADDED from C:\Users\user\AndroidStudioProjects\MakePhoto\app\src\main\AndroidManifest.xml:23:19-51
+		ADDED from C:\Users\user\AndroidStudioProjects\MakePhoto\app\src\main\AndroidManifest.xml:24:19-51
+uses-permission#android.permission.WRITE_EXTERNAL_STORAGE
+ADDED from C:\Users\user\AndroidStudioProjects\MakePhoto\app\src\main\AndroidManifest.xml:29:5-80
+	android:name
+		ADDED from C:\Users\user\AndroidStudioProjects\MakePhoto\app\src\main\AndroidManifest.xml:29:22-78
 uses-sdk
 INJECTED from C:\Users\user\AndroidStudioProjects\MakePhoto\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 MERGED from [com.android.support:appcompat-v7:25.3.1] C:\Users\user\.android\build-cache\27198d22c669526406db49e154ac1bd01ea2fb15\output\AndroidManifest.xml:21:5-23:78

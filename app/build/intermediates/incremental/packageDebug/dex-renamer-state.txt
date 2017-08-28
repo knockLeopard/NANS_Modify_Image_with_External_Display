@@ -1,0 +1,7 @@
+#Mon Aug 28 14:42:46 KST 2017
+base.0=C\:\\Users\\user\\AndroidStudioProjects\\MakePhoto\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_79bf0d4749276c866899f9f45e95846970d7cfbc
+renamed.1=classes.dex
+renamed.0=classes2.dex
+file.1=C\:\\Users\\user\\AndroidStudioProjects\\MakePhoto\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_366bef22167f24a1311972e257a000ffed7fec1d\\classes.dex
+base.1=C\:\\Users\\user\\AndroidStudioProjects\\MakePhoto\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run_366bef22167f24a1311972e257a000ffed7fec1d
+file.0=C\:\\Users\\user\\AndroidStudioProjects\\MakePhoto\\app\\build\\intermediates\\transforms\\dex\\debug\\folders\\1000\\10000\\instant-run-bootstrap_79bf0d4749276c866899f9f45e95846970d7cfbc\\classes.dex

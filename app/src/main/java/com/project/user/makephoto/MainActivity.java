@@ -6,7 +6,11 @@ import android.content.ComponentName;
 import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
 import android.hardware.display.DisplayManager;
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -17,7 +21,9 @@ import android.widget.ImageView;
 import android.widget.SeekBar;
 import android.widget.Toast;
 
+import java.io.File;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
 import java.util.ResourceBundle;
 
@@ -33,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
 
     int click_grey_left = 0;
     int click_grey_right = 0;
+    int click_cont_left = 0;
+    int click_cont_right = 0;
     int curr_progress_leftB = 127;
     int curr_progress_leftO = 255;
     int curr_progress_rightB = 127;
@@ -48,6 +56,11 @@ public class MainActivity extends AppCompatActivity {
         Button button_select = (Button) findViewById(R.id.button);
         Button button_left_grey = (Button) findViewById(R.id.button_left_grey);
         Button button_right_grey = (Button) findViewById(R.id.button_right_grey);
+        Button button_left_cont = (Button) findViewById(R.id.button_left_contrast);
+        Button button_right_cont = (Button) findViewById(R.id.button_right_contrast);
+        Button button_save_left = (Button) findViewById(R.id.saveLeft);
+        Button button_save_right = (Button) findViewById(R.id.saveRight);
+
 
         button_select.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -60,11 +73,30 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        button_left_cont.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                click_cont_left++;
+                click_grey_left = 0;
+                ((ControlActivity)ControlActivity.mContext).qq(click_cont_left, click_grey_left, curr_progress_leftB, curr_progress_leftO);
+            }
+        });
+
+        button_right_cont.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+                click_cont_right++;
+                click_grey_right = 0;
+                ((ControlActivity2)ControlActivity2.mContext).qq(click_cont_right, click_grey_right, curr_progress_rightB, curr_progress_rightO);
+            }
+        });
+
         button_left_grey.setOnClickListener(new View.OnClickListener(){
             @Override
             public void onClick(View v) {
                 click_grey_left++;
-                ((ControlActivity)ControlActivity.mContext).qq(click_grey_left, curr_progress_leftB, curr_progress_leftO);
+                click_cont_left = 0;
+                ((ControlActivity)ControlActivity.mContext).qq(click_cont_left, click_grey_left, curr_progress_leftB, curr_progress_leftO);
             }
         });
 
@@ -72,9 +104,27 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
                 click_grey_right++;
-                ((ControlActivity2)ControlActivity2.mContext).qq(click_grey_right, curr_progress_rightB, curr_progress_rightO);
+                click_cont_right = 0;
+                ((ControlActivity2)ControlActivity2.mContext).qq(click_cont_right, click_grey_right, curr_progress_rightB, curr_progress_rightO);
             }
         });
+
+
+        button_save_left.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+
+                ((ControlActivity)ControlActivity.mContext).savePicture();
+            }
+        });
+        button_save_right.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View v) {
+
+                ((ControlActivity2)ControlActivity2.mContext).savePicture();
+            }
+        });
+
         qqleft();
         qqright();
 
@@ -89,7 +139,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar){
                 //0~100  default :  50
-                ((ControlActivity)ControlActivity.mContext).qq(click_grey_left, curr_progress_leftB, curr_progress_leftO);
+                ((ControlActivity)ControlActivity.mContext).qq(click_cont_left, click_grey_left, curr_progress_leftB, curr_progress_leftO);
                // ControlActivity.selected_image.setImageBitmap(SetSaturation(image_bitmap, current_progress_s));
 
 
@@ -107,7 +157,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar){
                 //0~100  default :  50
-                ((ControlActivity)ControlActivity.mContext).qq(click_grey_left, curr_progress_leftB, curr_progress_leftO);
+                ((ControlActivity)ControlActivity.mContext).qq(click_cont_left, click_grey_left, curr_progress_leftB, curr_progress_leftO);
                 //selected_image.setImageBitmap(SetBrightness(image_bitmap, current_progress_l));
 
 
@@ -130,7 +180,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar){
                 //0~100  default :  50
-                ((ControlActivity2)ControlActivity2.mContext).qq(click_grey_right, curr_progress_rightB, curr_progress_rightO);
+                ((ControlActivity2)ControlActivity2.mContext).qq(click_cont_right, click_grey_right, curr_progress_rightB, curr_progress_rightO);
                 // ControlActivity.selected_image.setImageBitmap(SetSaturation(image_bitmap, current_progress_s));
 
 
@@ -148,7 +198,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onStopTrackingTouch(SeekBar seekBar){
                 //0~100  default :  50
-                ((ControlActivity2)ControlActivity2.mContext).qq(click_grey_right, curr_progress_rightB, curr_progress_rightO);
+                ((ControlActivity2)ControlActivity2.mContext).qq(click_cont_right, click_grey_right, curr_progress_rightB, curr_progress_rightO);
                 //selected_image.setImageBitmap(SetBrightness(image_bitmap, current_progress_l));
 
 

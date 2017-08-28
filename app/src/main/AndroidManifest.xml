@@ -17,7 +17,8 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".ControlActivity" >
+        <activity
+            android:name=".ControlActivity">
         </activity>
 
         <activity android:name=".ControlActivity2" >
@@ -25,5 +26,6 @@
 
 
     </application>
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE"/>
 
 </manifest>
