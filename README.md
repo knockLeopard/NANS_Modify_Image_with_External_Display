@@ -11,26 +11,33 @@ Moreover, you can apply filter - gray, constrast -
 2. First external Device
 3. Second external Device
 
-### How does it look like
-
+### Video Demo
+![demo](readme_demo_picture.png)
+- Click (youtube)
 
 ### Features
 - __Enable Modify__ image
 - One image with __two external display simultaneously__
 
+### What user can expect
+- User can edit picture and apply image filter simultaneously with two extra display
+- User also can save photo which user want to use
+
 ### Development Environment
 - Lineage OS 14.1 based on Android 7.1.2.
+- LG Nexus 5 (hammerhead)
 - Android Studio 2.3.3
 - JDK 8
+
+### Future Improvement
+- More filters
+- More fluent NANS
 
 ### Author
 |name|where|github|
 |:---------:|:------------------------------------------:|:------------:|
-|Shim, Sehee|Computer Science and Engineering, SNU|knockleopard|
+|Shim, Sehee|Computer Science and Engineering, SNU|[knockleopard](http://github.com/knockleopard)|
 |Kim, ShinHwi|Computer Science and Engineering, SNU|KimShinHwi|
 |Choi, Yoonseo|Computer Science and Engineering, SNU|Jim741305|
 
-
-Thanks to
-- TBD
-
+### License
